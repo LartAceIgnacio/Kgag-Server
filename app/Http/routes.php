@@ -27,4 +27,7 @@ Route::get('foobar', function() {
 //     return 'Hello ' . $name;
 // });
 
-Route::get('user/{id}', 'UserController@getUserbyId');
+Route::get('user/all',                 'UserController@getAllUsers');
+Route::get('user/id/{id}',             'UserController@getUserById');
+Route::get('user/username/{username}', 'UserController@getUserByUserName');
+Route::get('user/add',                 'UserController@insertUser');
