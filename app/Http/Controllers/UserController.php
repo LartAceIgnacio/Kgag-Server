@@ -26,7 +26,6 @@ class UserController extends Controller
 	public function insertUser()
 	{
 		$user = User::addUser();
-		var_dump($user);
 		return response()->json($user);
 	}
 }

@@ -65,14 +65,12 @@ class User extends Model implements AuthenticatableContract,
         $user->firstname = 'testtestFirstName';
         $user->lastname = 'testtestLastName';
         $current_date = date('Y-m-d H:i:s');
-        $user->datemodifed = $current_date;
+        $user->datemodified = $current_date;
         $user->datecreated = $current_date;
 
         try {
-            // dd($user);
             $user->save();
         } catch (Exception $e) {
-            echo $e;
             throw new Exception("Error Processing Request", 1);
         }
 
