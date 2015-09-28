@@ -8,9 +8,9 @@ class ModelKeys
 	const id            = 'id';
 	const username      = 'username';
 	const password      = 'password';
-	const first_name    = 'firstname';
-	const last_name     = 'lastname';
-	const date_created  = 'datecreated';
-	const date_modified = 'datemodified';
+	const first_name    = 'first_name';
+	const last_name     = 'last_name';
+	const date_created  = 'date_created';
+	const date_modified = 'date_modified';
 	const is_existing   = 'is_existing';
 }

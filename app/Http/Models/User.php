@@ -63,11 +63,11 @@ class User extends Model implements AuthenticatableContract,
 
         $user->username = $data[ModelKeys::username];
         $user->password = $data[ModelKeys::password];
-        $user->firstname = $data[ModelKeys::first_name];
-        $user->lastname = $data[ModelKeys::last_name];
+        $user->first_name = $data[ModelKeys::first_name];
+        $user->last_name = $data[ModelKeys::last_name];
         $current_date = date('Y-m-d H:i:s');
-        $user->datemodified = $current_date;
-        $user->datecreated = $current_date;
+        $user->date_modified = $current_date;
+        $user->date_created = $current_date;
 
         try {
             $user->save();
