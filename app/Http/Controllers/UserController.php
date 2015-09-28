@@ -10,6 +10,13 @@ use App\Http\Helpers\ModelKeys;
 
 class UserController extends Controller
 {
+	 /**
+	 * GET method
+     * view the users information via username
+     * 
+     * parameters 
+     * $userName 
+     */
 	public function viewAction($userName)
 	{
 		$json_return = array(
@@ -19,6 +26,13 @@ class UserController extends Controller
 		return response()->json($json_return);
 	}
 
+	/**
+	 * POST method
+     * Insert user in database.
+     * 
+     * parameters 
+     * $request
+     */
 	public function addAction(Request $request)
 	{
 		$data = $request->json()->get(ModelKeys::User);
