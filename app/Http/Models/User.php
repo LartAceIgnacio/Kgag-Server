@@ -11,6 +11,7 @@ use Illuminate\Foundation\Auth\Access\Authorizable;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
+use App\Http\Helpers\ModelKeys;
 
 class User extends Model implements AuthenticatableContract,
                                     AuthorizableContract,
@@ -56,14 +57,14 @@ class User extends Model implements AuthenticatableContract,
         return User::where('username', $userName) -> get();
     }
 
-    public static function addUser()
+    public static function addUser($data)
     {
         $user = new User;
 
-        $user->username = 'test1';
-        $user->password = 'qwerasdzxc';
-        $user->firstname = 'testtestFirstName';
-        $user->lastname = 'testtestLastName';
+        $user->username = $data[ModelKeys::username];
+        $user->password = $data[ModelKeys::password];
+        $user->firstname = $data[ModelKeys::first_name];
+        $user->lastname = $data[ModelKeys::last_name];
         $current_date = date('Y-m-d H:i:s');
         $user->datemodified = $current_date;
         $user->datecreated = $current_date;
