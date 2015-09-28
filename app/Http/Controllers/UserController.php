@@ -19,9 +19,15 @@ class UserController extends Controller
      */
 	public function viewAction($userName)
 	{
-		$json_return = array(
-            'data' => User::findbyUserName($userName)
-        );
+		$user = User::findbyUserName($userName);
+		$data;
+
+		if ($user)
+			$data[ModelKeys::User] = $user;
+		else
+			$data[ModelKeys::User] = array();
+
+        $json_return[ModelKeys::data] = $data;
 
 		return response()->json($json_return);
 	}

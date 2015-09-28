@@ -4,6 +4,7 @@ namespace App\Http\Helpers;
 
 class ModelKeys
 {
+	const data          = 'data';
 	const User          = 'User';
 	const id            = 'id';
 	const username      = 'username';
