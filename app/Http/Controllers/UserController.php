@@ -46,7 +46,7 @@ class UserController extends Controller
 
 		$json_return;
 
-		if (!$input->isEmpty()) {
+		if ($input) {
 			$json_return = array (
 				ModelKeys::is_existing => 1
 				);
