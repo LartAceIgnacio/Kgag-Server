@@ -59,4 +59,40 @@ class UserController extends Controller
 
 		return response()->json($json_return);
 	}
+
+	/**
+	 * POST method
+     * Verify user credentials (username and password)
+     * 
+     * parameters 
+     * $request
+     */
+	public function verifyAction(Request $request)
+	{
+		
+		$data = $request->json()->get(ModelKeys::User);
+		$userData = $request->input('User');
+
+		$username = $data[ModelKeys::username];
+		$password = $data[ModelKeys::password];
+
+		$user = User::findByLoginCredentials($username, $password);
+		$data;
+
+		if ($user) {
+			$data = array (
+				ModelKeys::is_valid => 1,
+				ModelKeys::User => $user
+				);
+		} else {
+			$data = array (
+				ModelKeys::is_valid => 0
+				);	
+		}
+
+		$json_return[ModelKeys::data] = $data;
+
+		return response()->json($json_return);
+	}
+
 }

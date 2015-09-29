@@ -57,6 +57,14 @@ class User extends Model implements AuthenticatableContract,
         return User::where('username', $userName) -> get() -> first();
     }
 
+    public static function findByLoginCredentials($userName, $password)
+    {
+        return User::where('username', $userName) 
+        ->where('password', $password)
+        -> get() 
+        -> first();
+    }
+
     public static function addUser($data)
     {
         $user = new User;

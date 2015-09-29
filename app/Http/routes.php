@@ -28,4 +28,5 @@ Route::get('foobar', function() {
 // });
 
 Route::get('user/view/{username}', 'UserController@viewAction');
-Route::post('user/add',                'UserController@addAction');
+Route::post('user/add',            'UserController@addAction');
+Route::post('user/verify',         'UserController@verifyAction');
