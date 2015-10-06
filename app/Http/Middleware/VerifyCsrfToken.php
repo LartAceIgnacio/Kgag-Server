@@ -14,6 +14,7 @@ class VerifyCsrfToken extends BaseVerifier
     protected $except = [
         //
     	'user/add',
-        'user/verify'
+        'user/verify',
+        'gag/add'
     ];
 }

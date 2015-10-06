@@ -15,4 +15,7 @@ class ModelKeys
 	const date_modified        = 'date_modified';
 	const is_existing          = 'is_existing';
 	const is_valid             = 'is_credentials_valid';
+	const message              = 'message';
+	const gag                  = 'gag';
+	const user_id              = 'user_id';
 }
