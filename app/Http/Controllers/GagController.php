@@ -36,6 +36,12 @@ class GagController extends Controller
         return response()->json($json_return);
     }
 
+    public function viewAction()
+    {
+        $gags = Gag::view();
+        return response()->json($gags);
+    }
+
     /**
      * Store a newly created resource in storage.
      *

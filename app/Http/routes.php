@@ -32,3 +32,4 @@ Route::post('user/add',            'UserController@addAction');
 Route::post('user/verify',         'UserController@verifyAction');
 
 Route::post('gag/add',             'GagController@createAction');
+Route::get('gag/view',             'GagController@viewAction');

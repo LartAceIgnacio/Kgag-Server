@@ -11,6 +11,12 @@ class Gag extends Model
     public $timestamps = false;
     protected $table = 'gag';
 
+    public static function view()
+    {
+        $gags = Gag::paginate(5);
+        return $gags;
+    }
+
     public static function add($data)
     {
     	$gag = new Gag;
@@ -22,5 +28,6 @@ class Gag extends Model
 
     	return $gag;
     }
+
 
 }
