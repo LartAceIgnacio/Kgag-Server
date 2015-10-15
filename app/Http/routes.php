@@ -31,5 +31,5 @@ Route::get('user/view/{username}', 'UserController@viewAction');
 Route::post('user/add',            'UserController@addAction');
 Route::post('user/verify',         'UserController@verifyAction');
 
-Route::post('gag/add',             'GagController@createAction');
+Route::post('gag/add',             'GagController@uploadPhotoAction');
 Route::get('gag/view',             'GagController@viewAction');

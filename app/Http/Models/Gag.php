@@ -22,7 +22,8 @@ class Gag extends Model
     	$gag = new Gag;
 
     	$gag->message = $data[ModelKeys::message];
-    	$gag->user_id = $data[ModelKeys::user_id];
+        $gag->upload_id = $data[ModelKeys::upload_id];
+        $gag->user_id = $data[ModelKeys::user_id];
 
     	$gag->save();
 

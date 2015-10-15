@@ -145,6 +145,10 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        /*
+        * Upload Manager Providers
+        */
+        zgldh\UploadManager\UploadManagerServiceProvider::class,
     ],
 
     /*

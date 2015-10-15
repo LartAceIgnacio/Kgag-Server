@@ -24,6 +24,7 @@ class CreateTables extends Migration
         Schema::create('gag', function (Blueprint $table) {
             $table->increments('id');
             $table->text('message');
+            $table->integer('upload_id');
             $table->integer('user_id')->unsigned()->default(0);
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();

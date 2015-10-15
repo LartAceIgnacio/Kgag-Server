@@ -2,11 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use DB;
+
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Models\Gag;
+use App\Http\Models\Upload;
 use App\Http\Helpers\ModelKeys;
+
+use zgldh\UploadManager\UploadManager;
 
 class GagController extends Controller
 {
@@ -18,6 +23,28 @@ class GagController extends Controller
     public function index()
     {
         //
+    }
+
+    public function uploadPhotoAction(Request $request)
+    {
+        DB::beginTransaction();
+
+        $photo = $request->file('photo');
+        $manager = UploadManager::getInstance();
+        $upload = $manager->upload($photo);
+        $upload->name = pathinfo($upload->path, PATHINFO_FILENAME);
+        $upload->save();
+
+        DB::commit();
+
+        $data = $request->input(ModelKeys::gag);   
+        $data[ModelKeys::upload_id] = $upload[ModelKeys::id];
+        $gag = Gag::add($data);
+
+        $data[ModelKeys::gag] = $gag;
+        $json_return[ModelKeys::data] = $data;
+
+        return response()->json($json_return);
     }
 
     /**
@@ -39,6 +66,15 @@ class GagController extends Controller
     public function viewAction()
     {
         $gags = Gag::view();
+
+        foreach ($gags as $gag) {
+            $upload = new Upload;
+            // $upload = Upload::where('id', $gag['upload_id'])->first();
+            $upload = $upload::view($gag['upload_id']);
+
+            $gag['upload'] = $upload;
+        }
+
         return response()->json($gags);
     }
 
