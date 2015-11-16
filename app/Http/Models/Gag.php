@@ -8,12 +8,12 @@ use App\Http\Helpers\ModelKeys;
 
 class Gag extends Model
 {
-    public $timestamps = false;
+    public $timestamps = true;
     protected $table = 'gag';
 
     public static function view()
     {
-        $gags = Gag::paginate(5);
+        $gags = Gag::orderBy('created_at', 'desc')->paginate(10);
         return $gags;
     }
 

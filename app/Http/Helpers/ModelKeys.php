@@ -19,4 +19,5 @@ class ModelKeys
 	const gag                  = 'gag';
 	const user_id              = 'user_id';
 	const upload_id            = 'upload_id';
+	const upload               = 'upload';
 }

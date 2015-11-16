@@ -9,6 +9,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Models\Gag;
 use App\Http\Models\Upload;
+use App\Http\Models\User;
 use App\Http\Helpers\ModelKeys;
 
 use zgldh\UploadManager\UploadManager;
@@ -69,10 +70,11 @@ class GagController extends Controller
 
         foreach ($gags as $gag) {
             $upload = new Upload;
-            // $upload = Upload::where('id', $gag['upload_id'])->first();
-            $upload = $upload::view($gag['upload_id']);
+            $upload = $upload::view($gag[ModelKeys::upload_id]);
+            $gag[ModelKeys::upload] = $upload;
 
-            $gag['upload'] = $upload;
+            $user = User::findById($gag[ModelKeys::user_id]);
+            $gag[ModelKeys::User] = $user;
         }
 
         return response()->json($gags);

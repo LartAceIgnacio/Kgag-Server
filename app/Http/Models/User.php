@@ -49,7 +49,7 @@ class User extends Model implements AuthenticatableContract,
 
     public static function findById($id)
     {
-        return User::where('id', $id) -> get();
+        return User::where('id', $id) -> get() -> first();
     }
 
     public static function findByUserName($userName)
